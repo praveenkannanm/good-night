@@ -41,6 +41,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 6.0.0'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'byebug'
 end
 
 group :development do
@@ -50,3 +51,4 @@ end
 
 # json serializers
 gem 'active_model_serializers', '~> 0.10.0'
+gem "bcrypt", "~> 3.1"

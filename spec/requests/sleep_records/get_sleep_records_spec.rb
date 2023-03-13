@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'PostSleepRecords', type: :request do
+RSpec.describe 'GetSleepRecords', type: :request do
   subject do
     User.create!(name: 'Test User1', token: SecureRandom.urlsafe_base64(nil, false), password: '123456')
   end

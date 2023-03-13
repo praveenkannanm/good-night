@@ -1,5 +1,15 @@
 class SleepRecordsController < ApplicationController
-  before_action :set_sleep_record, only: %i[show edit update destroy]
+  before_action :set_sleep_record, only: %i[show update]
+
+  # return all sleep records created within a week for the followers
+  def index
+    sleep_records = SleepRecord
+                    .where(user_id: current_user.followers.select(:id))
+                    .where('end_time >= ?', 1.week.ago)
+                    .order(Arel.sql('end_time - start_time DESC'))
+    response = { success: true, data: sleep_records }
+    render_response(response, :ok)
+  end
 
   # return the created sleep record to show details
   def show

@@ -1,12 +1,17 @@
 class SleepRecordsController < ApplicationController
-  before_action :set_sleep_record, only: %i[show update destroy]
+  before_action :set_sleep_record, only: %i[show edit update destroy]
+
+  # return the created sleep record to show details
+  def show
+    result = { success: true, data: @sleep_record }
+    render_response(result, :ok)
+  end
 
   # Create Sleep record with start time
   def create
     result = SleepRecords::Create.call(current_user, sleep_record_params)
     render_response(result, :created)
   end
-
 
   private
 

@@ -13,6 +13,12 @@ class SleepRecordsController < ApplicationController
     render_response(result, :created)
   end
 
+  # Updated the started sleep record with end_time
+  def update
+    result = SleepRecords::Update.call(@sleep_record, sleep_record_params)
+    render_response(result, :ok)
+  end
+
   private
 
   def set_sleep_record
